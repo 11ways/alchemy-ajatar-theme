@@ -1,0 +1,13 @@
+<% entries = internal('breadcrumb_entries') %>
+
+<ol class="breadcrumb">
+	<% if (entries) { %>
+		<% for (i = 0; i < entries.length; i++) { %>
+			<% crumb = entries[i] %>
+			<% parameters = Object.assign({}, internal('urlparams'), crumb.parameters) %>
+			<li class="js-he-link-wrapper">
+				<% Router.printRoute(crumb.route, parameters, Object.assign({extra_get_parameters: false}, crumb)) %>
+			</li>
+		<% } %>
+	<% } %>
+</ol>

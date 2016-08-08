@@ -1,0 +1,18 @@
+<div class="chimeraEditor-subschema-fields row" style="position: relative;">
+		<div class="col-md-12" style="padding-right: 5rem;">
+		<%
+			if (data.value != null) {
+				for (i = 0; i < data.value.fields.length; i++) {
+					Chimera.printField(data.value.fields[i], {is_nested: true, nested_id: parent_entries_id});
+				}
+			} else {
+				%> No subschema was set <%
+			}
+		%>
+	</div>
+	<% if (data.field.fieldType.isArray) { %>
+		<button class="btn btn-danger chimeraField-remove-entry" type="button" style="position: absolute;top: 0; bottom: 0;right: 0;">
+			<i class="fa fa-times" aria-hidden="true"></i>
+		</button>
+	<% } %>
+</div>

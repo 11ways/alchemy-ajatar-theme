@@ -1,0 +1,25 @@
+<div class="sidebar__menu">
+	<div class="sidebar__title">
+		<%= menu.title %>
+	</div>
+	<ul class="nav nav-menu">
+		<% menu.items.forEach(function eachItem(entry) { %>
+			<% settings = entry.settings %>
+
+			<li class="js-he-link-wrapper">
+				<a class="js-he-link" href="<%
+					if (settings.route) {
+						print(Router.routeUrl(settings.route, settings.parameters));
+					} else if (settings.href) {
+						print(settings.href);
+					} else {
+						print('#');
+					}
+				%>" data-breadcrumb="<%= Router.getTrail(settings.route, settings.parameters) %>">
+					<div class="nav-menu__text">
+						<span><%= settings.title %></span>
+					</div>
+				</a>
+		<% }) %>
+	</ul>
+</div>

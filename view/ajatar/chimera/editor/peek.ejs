@@ -1,0 +1,21 @@
+<% expands('chimera/editor/index') %>
+
+<% start('record-peek') %>
+<div class="records-preview__cont">
+	<div title="Id" class="records-preview__name"><%= display_field_value %></div>
+	<div class="records-preview__edit">
+		<% Chimera.printActions('record', {}, record); %>
+	</div>
+	<div class="records-preview__props">
+		<% fields = groups.general[0].fields %>
+		<% for (i = 0; i < fields.length; i++) { %>
+			<div
+				class="records-preview__prop"
+				title="<%= fields[i].field.fieldType.title %>"
+			>
+				<% Chimera.printField(fields[i]); %>
+			</div>
+		<% } %>
+	</div>
+</div>
+<% end('record-peek') %>

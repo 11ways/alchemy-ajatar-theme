@@ -1,0 +1,53 @@
+<ul class="nav navbar-nav navbar-left">
+	<%
+	if (chimera_menu && chimera_menu.forEach) {
+		chimera_menu.forEach(function eachEntry(entry, index) {
+
+			/* Only allow entries with the topbar property */
+			if (!entry.topbar) {
+				return;
+			}
+
+			if (!Object.isEmpty(entry.children)) { %>
+				<li class="dropdown">
+					<a href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle">
+						<span><%= entry.title %>&nbsp;<i class="caret"></i></span>
+					</a>
+					<ul class="dropdown-menu">
+						<% entry.children.forEach(eachEntry) %>
+					</ul>
+				</li>
+			<% } else {
+				if (entry.separator) { %>
+					<li role="separator" class="divider"></li>
+				<% } else { %>
+					<li>
+						<a class="js-he-link"
+							href="<%
+							if (entry.route) {
+								print(Router.routeUrl(entry.route, entry.parameters));
+							} else if (entry.href) {
+								print(entry.href);
+							} else {
+								print('#');
+							}
+						%>">
+							<span class="link-title"><%= entry.title %></span>
+						</a>
+					</li>
+				<% } %>
+			<% }
+		});
+	}
+	%>
+</ul>
+<ul class="userbar nav navbar-nav">
+	<li class="dropdown">
+		<a href="" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" class="userbar__settings dropdown-toggle">
+			<i class="fa fa-power-off"></i>
+		</a>
+		<ul class="dropdown-menu dropdown-menu-right">
+			<li><a href="#"><%= __('chimera', 'log.out') %></a></li>
+		</ul>
+	</li>
+</ul>

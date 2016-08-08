@@ -1,0 +1,59 @@
+<% expands('layouts/chimera');
+
+add_mn_record = __('chimera', 'Add {model_name} record', {model_name: modelName});
+
+Router.setBreadcrumb([
+	{title: __('chimera', 'Dashboard'), route: 'chimera@Dashboard'},
+	{title: modelName.titleize(), route: 'chimera@ModelAction', parameters: {action: 'index'}},
+	{title: add_mn_record, route: 'chimera@RecordAction'}
+]);
+
+start('chimera-cage') %>
+<div class="container-fluid half-padding chimera-editor">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="panel panel-danger">
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						<%= add_mn_record %>
+					</h3>
+					<div class="chimeraEditor-actions">
+						<% Chimera.printActions('record-draft', {className: 'btn btn-default', variables: {main_btn_class: 'btn-success'}}, record) %>
+					</div>
+				</div>
+				<div class="panel-body">
+					<ul role="tablist" class="nav nav-tabs">
+						<li class="dropdown pull-right tabdrop hide">
+							<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+								<i class="icon-align-justify"></i> <b class="caret"></b>
+							</a>
+							<ul class="dropdown-menu"></ul>
+						</li>
+						<% index = 0 %>
+						<% for (name in groups) { %>
+							<li role="presentation" class="<%= index++ == 0 ? 'active' : '' %>">
+								<a href="#<%= name.slug() %>" aria-controls="<%= name.slug() %>" role="tab" data-toggle="tab"><%= name.titleize() %></a>
+							</li>
+						<% } %>
+					</ul>
+					<div class="tab-content">
+						<% index = 0 %>
+						<% for (name in groups) { %>
+							<div id="<%= name.slug() %>" role="tabpanel" class="tab-pane <%= index++ == 0 ? 'active' : '' %>">
+								<div class="form-horizontal">
+									<%
+										fields = groups[name][0].fields;
+										for (i = 0; i < fields.length; i++) {
+											Chimera.printField(fields[i]);
+										}
+									%>
+								</div>
+							</div>
+						<% } %>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<% end('chimera-cage') %>

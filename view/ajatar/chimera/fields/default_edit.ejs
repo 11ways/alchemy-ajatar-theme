@@ -1,0 +1,16 @@
+<% if (data.field.fieldType.isArray) { %>
+	<div class="input-group">
+<% } %>
+<input
+	class="chimeraField-prime chimeraField-string form-control"
+	value="<%= data.value || '' %>"
+	type="text"
+>
+<% if (data.field.fieldType.isArray) { %>
+		<span class="input-group-btn">
+			<button class="btn btn-danger chimeraField-remove-entry" type="button">
+				<i class="fa fa-times" aria-hidden="true"></i>
+			</button>
+		</span>
+	</div>
+<% } %>

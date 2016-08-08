@@ -1,0 +1,16 @@
+<div class="chimeraField-row form-group">
+	<div class="chimeraField-left col-sm-2 control-label">
+		<label class="chimeraField-label">
+			<% assign('title') %>
+			<% print(data.field.fieldType.title) %>
+			<% assign_end('title') %>
+		</label>
+		<% if (data.field.fieldType.isArray) { %>
+			<button class="btn btn-default chimeraField-add-entry">
+				<i class="fa fa-plus" aria-hidden="true"></i>
+				<%= __('chimera', 'Add new entry') %>
+			</button>
+		<% } %>
+	</div>
+	<% assign('entries', {className: 'col-sm-10'}) %>
+</div>

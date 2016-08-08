@@ -1,0 +1,7 @@
+<ul class="al-pagination pagination <% options.class ? print(options.class) : '' %>">
+	<% for (i = 0; i < pages.length; i++) { %>
+		<li class="paginate_button">
+			<% print(Pagination.page(pages[i])); %>
+		</li>
+	<% } %>
+</ul>

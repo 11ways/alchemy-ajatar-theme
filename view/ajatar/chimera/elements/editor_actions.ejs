@@ -1,0 +1,41 @@
+<%
+
+if (!main_btn_class) {
+	main_btn_class = 'btn-danger';
+}
+
+if (force_inline) {
+	for (i = 0; i < actions.length; i++) {
+		action = actions[i];
+
+		if (!action.options.attributes) {
+			action.options.attributes = {};
+		}
+
+		action.options.attributes.role = 'button';
+
+		Router.printRoute(action.route_name, action.parameters, action.options);
+		print(' ');
+	}
+} else { %>
+	<div class="btn-group btn-group-sm">
+		<%
+			action = actions[0];
+			a_options = Object.assign({className: ''}, action.options);
+			a_options.className += ' btn ' + main_btn_class;
+		%>
+		<% Router.printRoute(action.route_name, action.parameters, Object.assign(action.options, a_options)) %>
+		<button type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn <%= main_btn_class %> dropdown-toggle">
+			<span class="caret"></span>
+		</button>
+
+		<ul class="dropdown-menu dropdown-menu-right">
+			<% for (i = 1; i < actions.length; i++) { %>
+				<% action = actions[i] %>
+				<li>
+					<% Router.printRoute(action.route_name, action.parameters, action.options) %>
+				</li>
+			<% } %>
+		</ul>
+	</div>
+<% } %>

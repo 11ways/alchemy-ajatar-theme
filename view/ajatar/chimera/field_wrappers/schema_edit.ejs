@@ -1,0 +1,20 @@
+<div class="chimeraEditor-subschema container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<h2 class="pull-left">
+				<% assign('title') %>
+				<% print(data.field.fieldType.title) %>
+				<% assign_end('title') %>
+			</h2>
+			<% if (data.field.fieldType.isArray) { %>
+				<button class="btn btn-default chimeraField-add-entry" style="margin:20px 0 10px 20px;">
+					<i class="fa fa-plus" aria-hidden="true"></i>
+					<%= __('chimera', 'Add new entry') %>
+				</button>
+			<% } %>
+		</div>
+	</div>
+	<div class="chimeraEditor-subschema-wrap row">
+		<% assign('entries', {className: 'col-md-12'}) %>
+	</div>
+</div>

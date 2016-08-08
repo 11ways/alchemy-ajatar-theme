@@ -1,0 +1,1 @@
+console.log('Ajatar has loaded');

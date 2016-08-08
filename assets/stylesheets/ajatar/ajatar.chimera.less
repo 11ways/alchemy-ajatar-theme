@@ -1,0 +1,41 @@
+.chimeraField-entry {
+	display: block;
+
+	&.action-edit {
+		margin-bottom: 0.5rem;
+	}
+}
+
+.action-save.btn {
+	.btn-success();
+}
+
+.action-remove.btn {
+	.btn-danger();
+}
+
+.flex-row {
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-flow: row wrap;
+	flex-flow: row wrap;
+	align-items: stretch;
+}
+
+.flex-col {
+	-webkit-flex: 0 auto;
+	flex: 0 auto;
+}
+
+.panel-heading {
+	display: flex;
+	align-items: center;
+
+	> * {
+		flex: auto;
+	}
+}
+
+.chimeraEditor-actions {
+	flex: 0 1 auto;
+}

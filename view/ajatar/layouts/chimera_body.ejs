@@ -1,0 +1,116 @@
+<%
+// Expand using chimera_base, but settle for base if it's available
+expands(['layouts/chimera_base', 'layouts/base']);
+
+// Load the ajatar dark stylesheet
+style([
+	'jquery.scrollbar',
+	'ion.rangeSlider',
+	'ion.rangeSlider.skinFlat',
+	'bootstrap-switch',
+	'ajatar.dark'
+]);
+
+// Load the bootstrap script
+script([
+	{name: 'jquery'},
+	'ajatar/jquery.scrollbar',
+	'ajatar/jquery.sparkline.min',
+	'bootstrap3.3/bootstrap',
+	'ajatar/bootstrap-tabdrop.min',
+	'ajatar/ion.rangeSlider',
+	'ajatar/inputNumber',
+	'ajatar/bootstrap-switch',
+	'ajatar/ajatar'
+]);
+
+// Enable old-style webcomponent
+WebComponent.load('svg');
+WebComponent.load('panel');
+WebComponent.load('switch');
+WebComponent.load('button-group');
+
+// Load the chimera script
+script('chimera/chimera');
+
+if (!project_title) {
+	project_title = 'Chimera';
+}
+
+// Start the body block
+start('body', {className: 'wrapper'}) %>
+<nav class="navbar navbar-static-top header-navbar">
+	<div class="header-navbar-mobile">
+		<div class="header-navbar-mobile__menu">
+			<button type="button" class="btn"><i class="fa fa-bars"></i></button>
+		</div>
+		<div class="header-navbar-mobile__title">
+			<span><%= project_title %></span>
+		</div>
+		<div class="header-navbar-mobile__settings dropdown">
+			<a href="" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" class="btn dropdown-toggle">
+				<i class="fa fa-power-off"></i>
+			</a>
+			<ul class="dropdown-menu dropdown-menu-right">
+				<li><a href="#"><%= __('chimera', 'log.out') %></a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="navbar-header">
+		<a href="index.html" class="navbar-brand">
+			<div class="logo text-nowrap">
+				<div class="logo__img">
+					<i class="fa fa-chevron-right"></i>
+				</div>
+				<span class="logo__text"><%= project_title %></span>
+			</div>
+		</a>
+	</div>
+	<% print_element('chimera/elements/topnavbar', null, {className: 'topnavbar'}) %>
+</nav>
+<div class="dashboard">
+	<% print_element('chimera/elements/sidebar', null, {className: 'sidebar'}) %>
+	<div class="main">
+		<div class="main__scroll scrollbar-macosx">
+			<div class="main__cont">
+				<div class="main-heading">
+					<div class="main-title">
+						<% Router.printBreadcrumb() %>
+					</div>
+					<div class="main-filter">
+						<form class="main-filter__search">
+							<div class="input-group">
+								<input type="text" placeholder="Search..." class="form-control">
+								<span class="input-group-btn">
+									<button type="button" class="btn btn-default">
+										<div class="fa fa-search"></div>
+									</button>
+								</span>
+							</div>
+						</form>
+					</div>
+				</div>
+				<% assign('chimera-cage', {className: 'chimera-cage container-fluid half-padding'}) %>
+				<!--<div class="container-fluid half-padding">
+
+					<div class="template template__blank">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="panel panel-danger">
+									<div class="panel-heading">
+										<h3 class="panel-title">Blank Page</h3>
+									</div>
+									<div class="panel-body">
+										<p>This is a blank page.</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>-->
+			</div>
+		</div>
+		
+	</div>
+</div>
+<% end('body') %>
