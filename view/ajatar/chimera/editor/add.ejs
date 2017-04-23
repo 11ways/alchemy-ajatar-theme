@@ -1,11 +1,13 @@
 <% expands('layouts/chimera');
 
-add_mn_record = __('chimera', 'Add {model_name} record', {model_name: modelName});
+add_mn_record = __('chimera', 'Add {model_name} record', {model_name: model_name});
+
+console.log('model_name:', model_name, {model_name: model_name}, add_mn_record)
 
 Router.setBreadcrumb([
 	{title: __('chimera', 'Dashboard'), route: 'chimera@Dashboard'},
-	{title: modelName.titleize(), route: 'chimera@ModelAction', parameters: {action: 'index'}},
-	{title: add_mn_record, route: 'chimera@RecordAction'}
+	{title: model_title,                route: 'chimera@ModelAction', parameters: {action: 'index'}},
+	{title: add_mn_record,              route: 'chimera@RecordAction'}
 ]);
 
 start('chimera-cage') %>
