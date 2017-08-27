@@ -1,8 +1,8 @@
 {
 	"name": "alchemy-ajatar-theme",
 	"description": "ajatar theme",
-	"version": "1.0.0",
+	"version": "0.4.0",
 	"author": "Jelle De Loecker <jelle@develry.be>",
 	"keywords": ["alchemy", "chimera", "theme"],
-	"repository": "git@github.com:skerit/alchemy-ajatar-theme.git"
+	"repository": "skerit/alchemy-ajatar-theme"
 }

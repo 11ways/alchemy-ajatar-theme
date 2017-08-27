@@ -1,11 +1,12 @@
 <% if (data.field.fieldType.isArray) { %>
 	<div class="input-group">
 <% } %>
-<input
-	class="chimeraField-prime chimeraField-string form-control"
-	value="<%= String(data.value || '').encodeHTML() %>"
+<select
+	class="chimeraField-prime"
+	value="<%= (data.value || '') %>"
+	id="field-<%= data.field.path %>"
 	type="text"
->
+></select>
 <% if (data.field.fieldType.isArray) { %>
 		<span class="input-group-btn">
 			<button class="btn btn-danger chimeraField-remove-entry" type="button">

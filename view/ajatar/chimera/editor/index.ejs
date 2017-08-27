@@ -25,7 +25,7 @@ start('chimera-cage') %>
 				<div class="panel-heading">
 					<h3 class="panel-title"><%= modelName.pluralize() %></h3>
 					<div class="chimeraEditor-actions">
-						<% Chimera.printActions('model-list', {className: 'btn btn-default', variables: {force_inline: true}}, record) %>
+						<% Chimera.printActions('model-list', {className: 'btn btn-primary', variables: {force_inline: true}}, record) %>
 					</div>
 				</div>
 				<div class="panel-body">
@@ -43,6 +43,18 @@ start('chimera-cage') %>
 
 														print('<th>');
 														print(Pagination.sort({field: field.path, content: field.fieldType.title}));
+														print('</th>');
+													}
+													%>
+												</tr>
+												<tr class="filter-row">
+													<%
+													fields.reset();
+													while (fields.hasNext()) {
+														field = fields.next().value;
+
+														print('<th>');
+														print(Pagination.filter({field: field.path, content: field.fieldType.title, className: 'form-control'}));
 														print('</th>');
 													}
 													%>

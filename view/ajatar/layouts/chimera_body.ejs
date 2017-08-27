@@ -8,8 +8,17 @@ style([
 	'ion.rangeSlider',
 	'ion.rangeSlider.skinFlat',
 	'bootstrap-switch',
-	'ajatar.dark'
+	'vex/vex',
+	'vex/vex.default',
+	'vex/vex.flat',
+	'vex/vex-theme-bottom-right-corner'
 ]);
+
+if (chimera_options && chimera_options.style) {
+	style('ajatar.' + chimera_options.style);
+} else {
+	style('ajatar.dark');
+}
 
 // Load the bootstrap script
 script([
@@ -22,6 +31,11 @@ script([
 	'ajatar/inputNumber',
 	'ajatar/bootstrap-switch',
 	'ajatar/ajatar'
+]);
+
+script([
+	{name: 'jquery'},
+	'vex/vex'
 ]);
 
 // Enable old-style webcomponent
