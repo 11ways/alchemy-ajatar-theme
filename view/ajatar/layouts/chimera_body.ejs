@@ -52,7 +52,7 @@ if (!project_title) {
 }
 
 // Start the body block
-start('body', {className: 'wrapper'}) %>
+start('body', {className: 'wrapper ' + chimera_options.extra_class}) %>
 <nav class="navbar navbar-static-top header-navbar">
 	<div class="header-navbar-mobile">
 		<div class="header-navbar-mobile__menu">
@@ -71,7 +71,7 @@ start('body', {className: 'wrapper'}) %>
 		</div>
 	</div>
 	<div class="navbar-header">
-		<a href="index.html" class="navbar-brand">
+		<a href="/chimera" class="navbar-brand">
 			<div class="logo text-nowrap">
 				<div class="logo__img">
 					<i class="fa fa-chevron-right"></i>

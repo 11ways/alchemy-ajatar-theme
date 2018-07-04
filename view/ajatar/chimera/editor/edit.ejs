@@ -6,6 +6,8 @@ Router.setBreadcrumb([
 	{title: display_field_value, route: 'chimera@RecordAction'}
 ]);
 
+set_title(__('chimera', 'Edit {model_name} record: "{name}"', {name: display_field_value, model_name: modelName}));
+
 start('chimera-cage') %>
 <div class="container-fluid half-padding chimera-editor">
 	<div class="row">

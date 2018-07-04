@@ -4,6 +4,9 @@
 	</div>
 	<ul class="nav nav-menu">
 		<% menu.items.forEach(function eachItem(entry) { %>
+
+			<% if (!entry || entry.hide || entry.settings.hide) return %>
+
 			<% settings = entry.settings %>
 
 			<li class="js-he-link-wrapper">
