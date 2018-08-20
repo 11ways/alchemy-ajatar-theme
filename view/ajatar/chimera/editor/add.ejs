@@ -10,6 +10,8 @@ Router.setBreadcrumb([
 
 set_title(add_mn_record);
 
+group_size = Object.size(groups);
+
 start('chimera-cage') %>
 <div class="container-fluid half-padding chimera-editor">
 	<div class="row">
@@ -25,7 +27,7 @@ start('chimera-cage') %>
 					</h3>
 				</div>
 				<div class="panel-body">
-					<ul role="tablist" class="nav nav-tabs">
+					<ul role="tablist" class="nav nav-tabs group-size-<%= group_size %>">
 						<li class="dropdown pull-right tabdrop hide">
 							<a class="dropdown-toggle" data-toggle="dropdown" href="#">
 								<i class="icon-align-justify"></i> <b class="caret"></b>

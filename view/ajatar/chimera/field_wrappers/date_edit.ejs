@@ -1,16 +1,20 @@
-<div class="chimeraField-row form-group">
-	<div class="col-sm-2 chimeraField-left control-label">
-		<label class="chimeraField-label">
-			<% assign('title') %>
-			<% print(data.field.fieldType.title) %>
-			<% assign_end('title') %>
-		</label>
-		<% if (data.field.fieldType.isArray) { %>
-			<button class="btn btn-default chimeraField-add-entry">
-				<i class="fa fa-plus" aria-hidden="true"></i>
-				<%= __('chimera', 'Add new entry') %>
-			</button>
-		<% } %>
+<div class="chimeraField-row form-group container-fluid">
+	<div class="row">
+		<div class="col-sm-12 chimeraField-left control-label">
+			<label class="chimeraField-label">
+				<% assign('title') %>
+				<% print(data.field.fieldType.title) %>
+				<% assign_end('title') %>
+			</label>
+			<% if (data.field.fieldType.isArray) { %>
+				<button class="btn btn-default chimeraField-add-entry">
+					<i class="fa fa-plus" aria-hidden="true"></i>
+					<%= __('chimera', 'Add new entry') %>
+				</button>
+			<% } %>
+		</div>
 	</div>
-	<% assign('entries', {className: 'col-sm-10'}) %>
+	<div class="row">
+		<% assign('entries', {className: 'col-sm-12'}) %>
+	</div>
 </div>

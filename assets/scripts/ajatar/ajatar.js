@@ -115,8 +115,11 @@ $(document).ready(function() {
 			mobile: false
 		});
 	}
+});
 
-	var sortable = new Draggable.Sortable(document.querySelectorAll('.datalist tbody'), {
+hawkejs.scene.on({type: 'set', template: 'chimera/editor/index'}, function onIndex(element, variables) {
+
+	var sortable = new Draggable.Sortable(element.querySelectorAll('.datalist tbody'), {
 		draggable : 'tr.sortable-row',
 		handle    : '.drag-handle'
 	});
@@ -159,4 +162,5 @@ $(document).ready(function() {
 
 		});
 	});
+
 });

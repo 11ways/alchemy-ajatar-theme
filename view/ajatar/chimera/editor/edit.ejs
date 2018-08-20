@@ -8,6 +8,8 @@ Router.setBreadcrumb([
 
 set_title(__('chimera', 'Edit {model_name} record: "{name}"', {name: display_field_value, model_name: modelName}));
 
+group_size = Object.size(groups);
+
 start('chimera-cage') %>
 <div class="container-fluid half-padding chimera-editor">
 	<div class="row">
@@ -23,7 +25,7 @@ start('chimera-cage') %>
 					</h3>
 				</div>
 				<div class="panel-body">
-					<ul role="tablist" class="nav nav-tabs">
+					<ul role="tablist" class="nav nav-tabs group-size-<%= group_size %>">
 						<li class="dropdown pull-right tabdrop hide">
 							<a class="dropdown-toggle" data-toggle="dropdown" href="#">
 								<i class="icon-align-justify"></i> <b class="caret"></b>
@@ -33,7 +35,14 @@ start('chimera-cage') %>
 						<% index = 0 %>
 						<% for (name in groups) { %>
 							<li role="presentation" class="<%= index++ == 0 ? 'active' : '' %>">
-								<a href="#<%= name.slug() %>" aria-controls="<%= name.slug() %>" role="tab" data-toggle="tab"><%= name.titleize() %></a>
+								<a
+									href="#<%= name.slug() %>"
+									aria-controls="<%= name.slug() %>"
+									role="tab"
+									data-toggle="tab"
+								>
+									<%= name.titleize() %>
+								</a>
 							</li>
 						<% } %>
 					</ul>
