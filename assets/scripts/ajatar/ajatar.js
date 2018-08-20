@@ -116,20 +116,9 @@ $(document).ready(function() {
 		});
 	}
 
-	/**
-	 * Enable "Peek" functionality
-	 */
-	$('body').on('click', 'tr[data-record-id]', function onClick(e) {
-
-		var $this = $(this),
-		    id;
-
-		// Get the record id
-		id = $this.data('record-id');
-	});
-
 	var sortable = new Draggable.Sortable(document.querySelectorAll('.datalist tbody'), {
-		draggable: 'tr.sortable-row'
+		draggable : 'tr.sortable-row',
+		handle    : '.drag-handle'
 	});
 
 	sortable.on('sortable:start', function onStart(e) {

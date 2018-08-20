@@ -37,6 +37,10 @@
 }
 
 .chimeraEditor-actions {
+	flex: 1 1 auto;
+}
+
+.chimera-panel-title {
 	flex: 0 1 auto;
 }
 
@@ -131,9 +135,10 @@
 	color: #5e6870;
 }
 
-.datalist .panel-body {
-	overflow: auto;
-}
+// We added this, but this causes menus to add scrollbars and such...
+// .datalist .panel-body {
+// 	overflow: auto;
+// }
 
 .datatable tr.filter-row input.form-control {
 	// This stops making the filter inputs widen small fields
@@ -146,4 +151,12 @@
 	td {
 		background-color: @gray-pad !important;
 	}
+
+	.chimera-actions-wrapper {
+		display: none;
+	}
+}
+
+.drag-handle {
+	cursor: grab;
 }

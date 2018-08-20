@@ -14,26 +14,42 @@ if (force_inline) {
 
 		action.options.attributes.role = 'button';
 
-		Router.printRoute(action.route_name, action.parameters, action.options);
+		a_options = Object.assign({}, action.options);
+		content = __('chimera', 'action.' + action.parameters.action + '.for.' + action.parameters.subject);
+		content.options.fallback = a_options.content;
+		a_options.content = content;
+
+		Router.printRoute(action.route_name, action.parameters, a_options);
 		print(' ');
 	}
 } else { %>
-	<div class="btn-group btn-group-sm">
+	<div class="btn-group btn-group-sm chimera-actions-wrapper">
 		<%
 			action = actions[0];
 			a_options = Object.assign({className: ''}, action.options);
 			a_options.className += ' btn ' + main_btn_class;
+
+			content = __('chimera', 'action.' + action.parameters.action + '.for.' + action.parameters.subject);
+			content.options.fallback = a_options.content;
+			a_options.content = content;
 		%>
 		<% Router.printRoute(action.route_name, action.parameters, Object.assign(action.options, a_options)) %>
 		<button type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn <%= main_btn_class %> dropdown-toggle">
 			<span class="caret"></span>
 		</button>
 
-		<ul class="dropdown-menu dropdown-menu-right">
+		<ul class="dropdown-menu dropdown-menu-right" style="z-index: 999">
 			<% for (i = 1; i < actions.length; i++) { %>
-				<% action = actions[i] %>
+				<%
+					action = actions[i];
+
+					a_options = Object.assign({}, action.options);
+					content = __('chimera', 'action.' + action.parameters.action + '.for.' + action.parameters.subject);
+					content.options.fallback = a_options.content;
+					a_options.content = content;
+				%>
 				<li>
-					<% Router.printRoute(action.route_name, action.parameters, action.options) %>
+					<% Router.printRoute(action.route_name, action.parameters, a_options) %>
 				</li>
 			<% } %>
 		</ul>

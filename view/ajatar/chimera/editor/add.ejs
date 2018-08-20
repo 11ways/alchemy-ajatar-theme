@@ -16,12 +16,13 @@ start('chimera-cage') %>
 		<div class="col-md-12">
 			<div class="panel panel-danger">
 				<div class="panel-heading">
-					<h3 class="panel-title">
-						<%= add_mn_record %>
-					</h3>
 					<div class="chimeraEditor-actions">
 						<% Chimera.printActions('record-draft', {className: 'btn btn-default', variables: {main_btn_class: 'btn-success'}}, record) %>
 					</div>
+
+					<h3 class="panel-title chimera-panel-title">
+						<%= add_mn_record %>
+					</h3>
 				</div>
 				<div class="panel-body">
 					<ul role="tablist" class="nav nav-tabs">
