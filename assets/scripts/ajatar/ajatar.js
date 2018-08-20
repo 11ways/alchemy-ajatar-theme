@@ -126,8 +126,48 @@ $(document).ready(function() {
 
 		// Get the record id
 		id = $this.data('record-id');
+	});
 
-		console.log('Clicked on', id)
+	var sortable = new Draggable.Sortable(document.querySelectorAll('.datalist tbody'), {
+		draggable: 'tr.sortable-row'
+	});
 
+	sortable.on('sortable:start', function onStart(e) {
+		var data = e.data,
+		    drag_event = data.dragEvent,
+		    mirror     = drag_event.data.mirror,
+		    source     = drag_event.data.source;
+
+		// Sure, it makes the mirror wider, but the tds remain small
+		//mirror.style.width = source.clientWidth + 'px';
+	});
+
+	sortable.on('sortable:stop', function onStopped(e) {
+
+		var data = e.data,
+		    drag_event = data.dragEvent,
+		    source     = drag_event.data.originalSource,
+		    over       = drag_event.data.over,
+		    record_id  = source.getAttribute('data-id'),
+		    new_index  = data.newIndex,
+		    model_name = source.getAttribute('data-modelname');
+
+		alchemy.fetch('RecordAction', {
+			parameters: {
+				controller: 'editor',
+				subject   : model_name,
+				action    : 'reorder',
+				id        : record_id
+			},
+			post: {
+				new_index: new_index
+			}
+		}, function done(err, res, body) {
+
+			if (err) {
+				console.error('Error saving order:', err);
+			}
+
+		});
 	});
 });

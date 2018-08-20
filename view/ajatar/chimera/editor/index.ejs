@@ -67,8 +67,15 @@ start('chimera-cage') %>
 														item = iterator.next();
 														record = item.value;
 														fields = record.fields;
+														sortable_class = '';
 
-														print('<tr class="model-list-record js-he-link" data-history="false" data-href="' + Router.routeUrl('RecordAction', {controller: 'editor', subject: modelName, action: 'peek', id: record.id}) + '">');
+														for (i = 0; i < fields.length; i++) {
+															if (fields[i].field.options.make_sortable) {
+																sortable_class = 'sortable-row';
+															}
+														}
+
+														print('<tr class="model-list-record js-he-link ' + sortable_class + '" data-history="false" data-href="' + Router.routeUrl('RecordAction', {controller: 'editor', subject: modelName, action: 'peek', id: record.id}) + '" data-id="' + record.id + '" data-modelname="' + modelName + '">');
 
 														for (i = 0; i < fields.length; i++) {
 															print('<td>');

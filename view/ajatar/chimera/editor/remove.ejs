@@ -1,0 +1,31 @@
+<% expands('layouts/chimera') %>
+
+<%
+Router.setBreadcrumb([
+	{title: __('chimera', 'Dashboard'), route: 'chimera@Dashboard'},
+	{title: modelName.titleize(), route: 'chimera@ModelAction', parameters: {action: 'index'}},
+	{title: display_field_value, route: 'chimera@RecordAction'}
+]);
+
+set_title(__('chimera', 'Remove {model_name} record: "{name}"', {name: display_field_value, model_name: modelName}));
+
+start('chimera-cage') %>
+<div class="container-fluid half-padding chimera-editor">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="panel panel-danger">
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						<%= __('chimera', 'Remove {model_name} record: "{name}"', {name: display_field_value, model_name: modelName}) %>
+					</h3>
+				</div>
+				<div class="panel-body">
+					<p>Are you sure you want to delete <% if (display_field_value) { %><%= display_field_value %><% } else { %><%= item._id %><% } %></p>
+					<% Router.printRoute('RecordAction', {controller: 'editor', subject: modelName, action: 'remove', id: item._id}, {title: 'Yes', className: 'btn remove-btn btn-red'}) %>
+					<% Router.printRoute('ModelAction', {controller: 'editor', subject: modelName, action: 'index'}, {title: 'No', className: 'btn'}) %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<% end('chimera-cage') %>
