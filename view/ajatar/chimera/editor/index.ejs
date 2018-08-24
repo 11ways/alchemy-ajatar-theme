@@ -60,7 +60,14 @@ if (pagination_config.sorting || pagination_config.filtering) {
 		}
 
 		print('<th>');
-		print(Pagination.filter({field: field.path, content: field.fieldType.title, className: 'form-control'}));
+		print(Pagination.filter({
+			field       : field.path,
+			content     : field.fieldType.title,
+			className   : 'form-control',
+			attributes  : {
+				placeholder : 'Filter…'
+			}
+		}));
 		print('</th>');
 	}
 	%>
