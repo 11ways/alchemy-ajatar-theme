@@ -1,7 +1,10 @@
 <div class="chimeraField-row form-group container-fluid">
 	<div class="row">
 		<div class="col-sm-12 chimeraField-left control-label">
-			<label class="chimeraField-label">
+			<label
+				class="chimeraField-label"
+				for="field-<%= data.field.path %>"
+			>
 				<% assign('title') %>
 				<% print(data.field.fieldType.title) %>
 				<% assign_end('title') %>

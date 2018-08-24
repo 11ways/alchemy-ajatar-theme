@@ -2,6 +2,7 @@
 	<div class="input-group">
 <% } %>
 <input
+	id="field-<%= data.field.path %>"
 	class="chimeraField-prime chimeraField-string form-control"
 	value="<%= String(data.value || '').encodeHTML() %>"
 	type="text"
