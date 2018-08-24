@@ -1,12 +1,9 @@
-<% expands('layouts/chimera');
-
-Router.setBreadcrumb([
-	{title: __('chimera', 'Dashboard'), route: 'chimera@Dashboard'},
-	{title: pagetitle,                  route: 'chimera@ModelAction'}
-]);
-
+<% implement('chimera/editor/index_wrapper') %>
+<%
 is_sortable = false;
 show_sortable_handles = false;
+
+fields.reset();
 
 while (fields.hasNext()) {
 	field = fields.next().value;
@@ -23,141 +20,98 @@ pagination_config = Pagination.getConfig();
 if (pagination_config.sorting || pagination_config.filtering) {
 	show_sortable_handles = false;
 }
+%>
 
-fields.reset();
+<% start('index_title_row') %>
+	<% if (is_sortable && show_sortable_handles) { %>
+		<th></th>
+	<% } %>
 
-start('chimera-cage') %>
-<div class="datalist page float-right">
-	<div class="row">
+	<%
+	fields.reset();
+	while (fields.hasNext()) {
+		field = fields.next().value;
 
-		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-			<div class="panel panel-info">
-				<div class="panel-heading">
-					<div class="chimeraEditor-actions">
-						<% Chimera.printActions('model-list', {className: 'btn btn-primary', variables: {force_inline: true}}, record) %>
-					</div>
-					<h3 class="panel-title chimera-panel-title">
-						<%= modelName.pluralize() %>
-					</h3>
-				</div>
-				<div class="panel-body">
-					<div class="datalist__result">
-						<div class="container-fluid">
-							<div class="dataTables_wrapper form-inline dt-bootstrap">
-								<div class="row">
-									<div class="col-sm-12">
-										<table width="100%" data-orders="new" class="table datatable display table-hover dataTable" role="grid" aria-describedby="DataTables_Table_0_info" style="width: 100%;">
-											<thead>
-												<tr role="row">
+		if (field.options.hide) {
+			continue;
+		}
 
-													<% if (is_sortable && show_sortable_handles) { %>
-														<th></th>
-													<% } %>
+		print('<th>');
+		print(Pagination.sort({field: field.path, content: field.fieldType.title}));
+		print('</th>');
+	}
+	%>
+	<th></th>
+<% end('index_title_row') %>
 
-													<%
-													while (fields.hasNext()) {
-														field = fields.next().value;
+<% start('index_filter_row') %>
+	<%
 
-														if (field.options.hide) {
-															continue;
-														}
+	if (is_sortable && show_sortable_handles) {
+		print('<th></th>');
+	}
 
-														print('<th>');
-														print(Pagination.sort({field: field.path, content: field.fieldType.title}));
-														print('</th>');
-													}
-													%>
-													<th></th>
-												</tr>
-												<tr class="filter-row">
-													<%
+	fields.reset();
+	while (fields.hasNext()) {
+		field = fields.next().value;
 
-													if (is_sortable && show_sortable_handles) {
-														print('<th></th>');
-													}
+		if (field.options.hide) {
+			continue;
+		}
 
-													fields.reset();
-													while (fields.hasNext()) {
-														field = fields.next().value;
+		print('<th>');
+		print(Pagination.filter({field: field.path, content: field.fieldType.title, className: 'form-control'}));
+		print('</th>');
+	}
+	%>
+	<th></th>
+<% end('index_filter_row') %>
 
-														if (field.options.hide) {
-															continue;
-														}
+<% start('index_tbody') %>
+	<%
+		iterator = records.createIterator();
+		while (iterator.hasNext()) {
+			item = iterator.next();
+			record = item.value;
+			sortable_class = '';
 
-														print('<th>');
-														print(Pagination.filter({field: field.path, content: field.fieldType.title, className: 'form-control'}));
-														print('</th>');
-													}
-													%>
-													<th></th>
-												</tr>
-											</thead>
-											<tbody>
-												<%
-													iterator = records.createIterator();
-													while (iterator.hasNext()) {
-														item = iterator.next();
-														record = item.value;
-														fields = record.fields;
-														sortable_class = '';
+			if (is_sortable && show_sortable_handles) {
+				sortable_class = 'sortable-row';
+			}
 
-														if (is_sortable && show_sortable_handles) {
-															sortable_class = 'sortable-row';
-														}
+			%>
 
-														print('<tr class="model-list-record js-he-link ' + sortable_class + '" data-history="false" data-id="' + record.id + '" data-modelname="' + modelName + '">');
+			<tr
+				class="model-list-record js-he-link <%= sortable_class %>"
+				data-href="<%= Router.routeUrl('RecordAction', {controller: 'editor', subject: modelName, action: 'edit', id: record.id}) %>"
+				data-id="<%= record.id %>"
+				data-modelname="<%= modelName %>"
+			>
 
-														if (is_sortable && show_sortable_handles) {
-															print('<td class="drag-handle"><i class="fas fa-grip-vertical"></i></td>');
-														}
+			<%
 
-														for (i = 0; i < fields.length; i++) {
+			if (is_sortable && show_sortable_handles) {
+				print('<td class="drag-handle"><i class="fas fa-grip-vertical"></i></td>');
+			}
 
-															if (fields[i].field.options.hide) {
-																continue;
-															}
+			for (i = 0; i < record.fields.length; i++) {
 
-															print('<td>');
-															Chimera.printField(fields[i]);
-															print('</td>');
-														}
+				if (record.fields[i].field.options.hide) {
+					continue;
+				}
 
-														print('<td>');
-														Chimera.printActions('record', {}, record);
-														print('</td>');
+				print('<td>');
+				Chimera.printField(record.fields[i]);
+				print('</td>');
+			}
 
-														print('</tr>');
-													}
-												%>
-											</tbody>
-										</table>
-									</div>
-								</div>
+			print('<td class="js-he-unlink">');
+			Chimera.printActions('record', {}, record);
+			print('</td>');
 
-								<% if (!is_sortable) { %>
-									<div class="row">
-										<div class="col-sm-5">
-											<div class="dataTables_info" id="DataTables_Table_0_info" role="status" aria-live="polite">
-												<%= __('chimera', 'Showing {first} to {last} of {total} records', {
-													first : Pagination.getFirstOfPage(),
-													last  : Pagination.getLastOfPage(),
-													total : Pagination.getTotalItems()
-												}) %>
-											</div>
-										</div>
-										<div class="col-sm-7">
-											<div class="dataTables_paginate paging_simple_numbers">
-												<% Pagination.show() %>
-											</div>
-										</div>
-									</div>
-								<% } %>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-<% end('chimera-cage') %>
+			%>
+			</tr>
+			<%
+		}
+	%>
+<% end('index_tbody') %>
