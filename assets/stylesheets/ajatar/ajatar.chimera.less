@@ -190,3 +190,11 @@
 ul.group-size-1 {
 	display: none;
 }
+
+.breadcrumb > li.crumb-opener + li::before {
+	content: '';
+}
+
+.breadcrumb > li:not(.crumb-opener) + li::before {
+	content: "→";
+}

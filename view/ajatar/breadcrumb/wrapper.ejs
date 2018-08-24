@@ -2,12 +2,22 @@
 
 <ol class="breadcrumb">
 	<% if (entries) { %>
+		<li class="crumb-opener">
+			<%= __('breadcrumb.opener') %>
+		</li>
 		<% for (i = 0; i < entries.length; i++) { %>
 			<% crumb = entries[i] %>
-			<% parameters = Object.assign({}, internal('urlparams'), crumb.parameters) %>
-			<li class="js-he-link-wrapper">
-				<% Router.printRoute(crumb.route, parameters, Object.assign({extra_get_parameters: false}, crumb)) %>
-			</li>
+
+			<% if (i == entries.length - 1) { %>
+				<li>
+					<%= crumb.title %>
+				</li>
+			<% } else { %>
+				<% parameters = Object.assign({}, internal('urlparams'), crumb.parameters) %>
+				<li class="js-he-link-wrapper">
+					<% Router.printRoute(crumb.route, parameters, Object.assign({extra_get_parameters: false}, crumb)) %>
+				</li>
+			<% } %>
 		<% } %>
 	<% } %>
 </ol>
