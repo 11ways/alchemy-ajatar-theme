@@ -6,14 +6,22 @@ Router.setBreadcrumb([
 ]);
 
 is_sortable = false;
+show_sortable_handles = false;
 
 while (fields.hasNext()) {
 	field = fields.next().value;
 
 	if (field.options.make_sortable) {
 		is_sortable = true;
+		show_sortable_handles = true;
 		break;
 	}
+}
+
+pagination_config = Pagination.getConfig();
+
+if (pagination_config.sorting || pagination_config.filtering) {
+	show_sortable_handles = false;
 }
 
 fields.reset();
@@ -42,13 +50,17 @@ start('chimera-cage') %>
 											<thead>
 												<tr role="row">
 
-													<% if (is_sortable) { %>
+													<% if (is_sortable && show_sortable_handles) { %>
 														<th></th>
 													<% } %>
 
 													<%
 													while (fields.hasNext()) {
 														field = fields.next().value;
+
+														if (field.options.hide) {
+															continue;
+														}
 
 														print('<th>');
 														print(Pagination.sort({field: field.path, content: field.fieldType.title}));
@@ -60,13 +72,17 @@ start('chimera-cage') %>
 												<tr class="filter-row">
 													<%
 
-													if (is_sortable) {
+													if (is_sortable && show_sortable_handles) {
 														print('<th></th>');
 													}
 
 													fields.reset();
 													while (fields.hasNext()) {
 														field = fields.next().value;
+
+														if (field.options.hide) {
+															continue;
+														}
 
 														print('<th>');
 														print(Pagination.filter({field: field.path, content: field.fieldType.title, className: 'form-control'}));
@@ -85,17 +101,22 @@ start('chimera-cage') %>
 														fields = record.fields;
 														sortable_class = '';
 
-														if (is_sortable) {
+														if (is_sortable && show_sortable_handles) {
 															sortable_class = 'sortable-row';
 														}
 
 														print('<tr class="model-list-record js-he-link ' + sortable_class + '" data-history="false" data-id="' + record.id + '" data-modelname="' + modelName + '">');
 
-														if (is_sortable) {
+														if (is_sortable && show_sortable_handles) {
 															print('<td class="drag-handle"><i class="fas fa-grip-vertical"></i></td>');
 														}
 
 														for (i = 0; i < fields.length; i++) {
+
+															if (fields[i].field.options.hide) {
+																continue;
+															}
+
 															print('<td>');
 															Chimera.printField(fields[i]);
 															print('</td>');
