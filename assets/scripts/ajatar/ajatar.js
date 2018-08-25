@@ -117,12 +117,14 @@ $(document).ready(function() {
 	}
 });
 
-hawkejs.scene.on({type: 'set', template: 'chimera/editor/index'}, function onIndex(element, variables) {
+hawkejs.scene.on({type: 'set', name: 'index_tbody', template: 'chimera/editor/index'}, function onIndex(element, variables) {
 
-	var sortable = new Draggable.Sortable(element.querySelectorAll('.datalist tbody'), {
+	var sortable = new Draggable.Sortable(element, {
 		draggable : 'tr.sortable-row',
 		handle    : '.drag-handle'
 	});
+
+	console.log('Sortable:', sortable)
 
 	sortable.on('sortable:start', function onStart(e) {
 		var data = e.data,
