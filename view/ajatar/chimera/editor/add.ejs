@@ -19,7 +19,13 @@ start('chimera-cage') %>
 			<div class="panel panel-danger">
 				<div class="panel-heading">
 					<div class="chimeraEditor-actions">
-						<% Chimera.printActions('record-draft', {className: 'btn btn-default', variables: {main_btn_class: 'btn-success'}}, record) %>
+						<% Chimera.printActions('record-edit', {
+							className : 'btn btn-default',
+							variables : {
+								main_btn_class : 'btn-success',
+								force_inline   : true
+							}
+						}, record) %>
 					</div>
 
 					<h3 class="panel-title chimera-panel-title">
@@ -56,6 +62,16 @@ start('chimera-cage') %>
 							</div>
 						<% } %>
 					</div>
+				</div>
+
+				<div class="panel-footer">
+					<% Chimera.printActions('record-draft', {
+						className : 'btn btn-default',
+						variables : {
+							main_btn_class : 'btn-success',
+							force_inline   : true
+						}
+					}, record) %>
 				</div>
 			</div>
 		</div>
