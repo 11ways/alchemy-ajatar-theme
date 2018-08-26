@@ -1,7 +1,7 @@
 {
 	"name": "alchemy-ajatar-theme",
 	"description": "ajatar theme",
-	"version": "1.1.1-alpha",
+	"version": "1.1.1",
 	"author": "Jelle De Loecker <jelle@develry.be>",
 	"keywords": [
 		"alchemy",
@@ -9,8 +9,7 @@
 		"theme"
 	],
 	"peerDependencies": {
-		"alchemymvc": "~1.0.0"
+		"alchemymvc": "~1.0.4"
 	},
-	"repository": "skerit/alchemy-ajatar-theme",
-	"private": true
+	"repository": "skerit/alchemy-ajatar-theme"
 }

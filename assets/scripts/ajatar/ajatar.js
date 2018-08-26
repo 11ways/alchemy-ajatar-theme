@@ -124,8 +124,6 @@ hawkejs.scene.on({type: 'set', name: 'index_tbody', template: 'chimera/editor/in
 		handle    : '.drag-handle'
 	});
 
-	console.log('Sortable:', sortable)
-
 	sortable.on('sortable:start', function onStart(e) {
 		var data = e.data,
 		    drag_event = data.dragEvent,
