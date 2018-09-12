@@ -4,12 +4,16 @@
 	</div>
 	<ul class="nav nav-menu">
 		<% menu.items.forEach(function eachItem(entry) { %>
+			<%
+				if (!entry || entry.hide || entry.settings.hide) {
+					return
+				}
 
-			<% if (!entry || entry.hide || entry.settings.hide) return %>
+				settings = entry.settings;
+				trail = Router.getTrail(settings.route, settings.parameters);
+			%>
 
-			<% settings = entry.settings %>
-
-			<li class="js-he-link-wrapper">
+			<li class="js-he-link-wrapper" data-breadcrumb="<%= trail %>">
 				<a class="js-he-link" href="<%
 					if (settings.route) {
 						print(Router.routeUrl(settings.route, settings.parameters));
@@ -18,8 +22,11 @@
 					} else {
 						print('#');
 					}
-				%>" data-breadcrumb="<%= Router.getTrail(settings.route, settings.parameters) %>">
+				%>" data-breadcrumb="<%= trail %>">
 					<div class="nav-menu__text">
+						<% if (settings.icon && settings.icon.fa) { %>
+							<i class="fas fa-<%= settings.icon.fa %>"></i>
+						<% } %>
 						<span><%= settings.title %></span>
 					</div>
 				</a>

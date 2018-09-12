@@ -1,0 +1,14 @@
+<%
+value = data.value;
+
+if (data.value && typeof data.value.format == 'function') {
+	value = data.value.format('Y-m-d');
+}
+%>
+<input
+	type="date"
+	class="chimeraField-prime form-control"
+	name="data.<%= data.field.path %>"
+	value="<%= value || '' %>"
+	id="field-<%= data.field.path %>"
+>

@@ -1,3 +1,8 @@
+## 1.1.2 (WIP)
+
+* Load in `custom_chimera` stylesheet, so each project can override certain things
+* Add fontawesome icons to the menu
+
 ## 1.1.1 (2018-08-27)
 
 * Add sortable functionality for list index
