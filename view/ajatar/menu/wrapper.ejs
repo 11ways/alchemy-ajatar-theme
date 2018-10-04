@@ -25,7 +25,11 @@
 				%>" data-breadcrumb="<%= trail %>">
 					<div class="nav-menu__text">
 						<% if (settings.icon && settings.icon.fa) { %>
-							<i class="fas fa-<%= settings.icon.fa %>"></i>
+							<% if (settings.icon.fa.startsWith('fa') && !settings.icon.fa.startsWith('fa-')) { %>
+								<i class="<%= settings.icon.fa %>"></i>
+							<% } else { %>
+								<i class="fas fa-<%= settings.icon.fa %>"></i>
+							<% } %>
 						<% } %>
 						<span><%= settings.title %></span>
 					</div>
