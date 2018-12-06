@@ -1,3 +1,5 @@
+## 1.1.4 (WIP)
+
 ## 1.1.3 (2018-12-06)
 
 * Upgrade fontawesome to 5.5
