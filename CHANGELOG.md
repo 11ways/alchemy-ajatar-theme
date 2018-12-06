@@ -1,4 +1,4 @@
-## 1.1.3 (WIP)
+## 1.1.3 (2018-12-06)
 
 * Upgrade fontawesome to 5.5
 * Require at least alchemy v1.0.6
