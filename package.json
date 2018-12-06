@@ -9,7 +9,7 @@
 		"theme"
 	],
 	"peerDependencies": {
-		"alchemymvc": "~1.0.4"
+		"alchemymvc": "~1.0.6"
 	},
 	"repository": "skerit/alchemy-ajatar-theme",
 	"private": true

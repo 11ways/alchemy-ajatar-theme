@@ -1,3 +1,8 @@
+## 1.1.3 (WIP)
+
+* Upgrade fontawesome to 5.5
+* Require at least alchemy v1.0.6
+
 ## 1.1.2 (2018-10-18)
 
 * Load in `custom_chimera` stylesheet, so each project can override certain things
