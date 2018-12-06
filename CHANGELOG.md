@@ -2,6 +2,7 @@
 
 * Upgrade fontawesome to 5.5
 * Require at least alchemy v1.0.6
+* Add field title & description support
 
 ## 1.1.2 (2018-10-18)
 

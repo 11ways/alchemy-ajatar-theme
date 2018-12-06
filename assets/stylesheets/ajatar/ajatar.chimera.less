@@ -176,11 +176,31 @@
 	}
 }
 
+.chimeraField-entry {
+	// Fallback for non-form-control inputs being too light
+	input:not(.form-control) {
+		color: #444;
+	}
+}
+
 .chimeraField-left.control-label {
 	text-align: left;
 
 	label {
 		padding-left: 9px;
+	}
+}
+
+.chimeraField-label,
+.chimeraEditor-fieldLabel {
+	.field-title {
+		font-size: 1.8rem;
+		color: white;
+	}
+
+	.field-description {
+		display: block;
+		color: #ababab;
 	}
 }
 
