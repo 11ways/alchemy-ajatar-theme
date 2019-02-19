@@ -1,5 +1,7 @@
 ## 1.1.4 (WIP)
 
+* Make dialogs fully opaque + add backdrop-filter blur to the overlay if possible
+
 ## 1.1.3 (2018-12-06)
 
 * Upgrade fontawesome to 5.5

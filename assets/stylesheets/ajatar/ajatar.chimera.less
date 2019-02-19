@@ -271,7 +271,15 @@ input[type="month"].form-control {
 [data-type="dialog"] {
 	min-width: 50vw;
 	padding: 2rem;
-	background-color: @gray-dark;
+
+	// Make sure it's opaque
+	background-color: fadein(@gray-dark, 100%);
+}
+
+@supports (backdrop-filter: blur(20px)) {
+	.js-he-dialog-wrapper {
+		backdrop-filter: blur(4px);
+	}
 }
 
 // Hide useless ckeditor image fields
