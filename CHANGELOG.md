@@ -1,4 +1,6 @@
-## 1.1.4 (WIP)
+## 1.2.0 (WIP)
+
+* Make compatible with alchemy v1.1.0
 
 * Make dialogs fully opaque + add backdrop-filter blur to the overlay if possible
 

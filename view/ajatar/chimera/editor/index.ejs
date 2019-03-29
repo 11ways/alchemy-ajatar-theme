@@ -35,10 +35,11 @@ if (pagination_config.sorting || pagination_config.filtering) {
 		if (field.options.hide) {
 			continue;
 		}
-
-		print('<th>');
-		print(Pagination.sort({field: field.path, content: field.fieldType.title}));
-		print('</th>');
+	%>
+		<th>
+			<% print(Pagination.sort({field: field.path, content: field.fieldType.title})); %>
+		</th>
+	<%
 	}
 	%>
 	<th></th>
@@ -47,9 +48,9 @@ if (pagination_config.sorting || pagination_config.filtering) {
 <% start('index_filter_row') %>
 	<%
 
-	if (is_sortable && show_sortable_handles) {
-		print('<th></th>');
-	}
+	if (is_sortable && show_sortable_handles) { %>
+		<th></th>
+	<% }
 
 	fields.reset();
 	while (fields.hasNext()) {
@@ -59,7 +60,7 @@ if (pagination_config.sorting || pagination_config.filtering) {
 			continue;
 		}
 
-		print('<th>');
+		%> <th> <%
 		print(Pagination.filter({
 			field       : field.path,
 			content     : field.fieldType.title,
@@ -68,7 +69,7 @@ if (pagination_config.sorting || pagination_config.filtering) {
 				placeholder : 'Filter…'
 			}
 		}));
-		print('</th>');
+		%> </th> <%
 	}
 	%>
 	<th></th>
@@ -97,9 +98,11 @@ if (pagination_config.sorting || pagination_config.filtering) {
 
 			<%
 
-			if (is_sortable && show_sortable_handles) {
-				print('<td class="drag-handle js-he-unlink"><i class="fas fa-grip-vertical"></i></td>');
-			}
+			if (is_sortable && show_sortable_handles) { %>
+				<td class="drag-handle js-he-unlink">
+					<i class="fas fa-grip-vertical"></i>
+				</td>
+			<% }
 
 			for (i = 0; i < record.fields.length; i++) {
 
@@ -107,14 +110,14 @@ if (pagination_config.sorting || pagination_config.filtering) {
 					continue;
 				}
 
-				print('<td>');
+				%> <td> <%
 				Chimera.printField(record.fields[i]);
-				print('</td>');
+				%> </td> <%
 			}
 
-			print('<td class="js-he-unlink">');
+			%> <td class="js-he-unlink"> <%
 			Chimera.printActions('record', {}, record);
-			print('</td>');
+			%> </td> <%
 
 			%>
 			</tr>
