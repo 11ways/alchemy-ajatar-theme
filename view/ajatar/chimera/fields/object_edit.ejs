@@ -3,6 +3,6 @@
 	class="chimeraField-prime chimeraField-string form-control"
 	rows=7
 ><%= JSON.stringify(data.value, null, 4) %></textarea>
-<% if (data.field.fieldType.isArray) { %>
+<% if (data.field.fieldType.is_array) { %>
 	<button class="btn chimeraField-remove-entry" type="button">x</button>
 <% } %>

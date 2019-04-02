@@ -50,10 +50,10 @@ start('chimera-cage') %>
 									<div class="col-sm-12">
 										<table width="100%" data-orders="new" class="table datatable display table-hover dataTable" role="grid" aria-describedby="DataTables_Table_0_info" style="width: 100%;">
 											<thead>
-												<% assign('index_title_row', {tag_name: 'tr'}) %>
-												<% assign('index_filter_row', {tag_name: 'tr', className: 'filter-row'}) %>
+												<tr data-he-name="index_title_row"></tr>
+												<tr data-he-name="index_filter_row" class="filter-row"></tr>
 											</thead>
-											<% assign('index_tbody', {tag_name: 'tbody'}) %>
+											<tbody data-he-name="index_tbody"></tbody>
 										</table>
 									</div>
 								</div>

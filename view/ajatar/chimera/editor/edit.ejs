@@ -1,7 +1,7 @@
 <% expands('layouts/chimera');
 
 Router.setBreadcrumb([
-	{title: __('chimera', 'Dashboard'), route: 'chimera@Dashboard'},
+	{title: __d('chimera', 'Dashboard'), route: 'chimera@Dashboard'},
 	{title: modelName.titleize(), route: 'chimera@ModelAction', parameters: {action: 'index'}},
 	{title: display_field_value, route: 'chimera@RecordAction'}
 ]);

@@ -1,4 +1,4 @@
-<% if (data.field.fieldType.isArray) { %>
+<% if (data.field.fieldType.is_array) { %>
 	<div class="input-group">
 <% } %>
 <select
@@ -7,7 +7,7 @@
 	id="field-<%= data.field.path %>"
 	type="text"
 ></select>
-<% if (data.field.fieldType.isArray) { %>
+<% if (data.field.fieldType.is_array) { %>
 		<span class="input-group-btn">
 			<button class="btn btn-danger chimeraField-remove-entry" type="button">
 				<i class="fa fa-times" aria-hidden="true"></i>
