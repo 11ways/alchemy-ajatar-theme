@@ -4,7 +4,7 @@
 <input
 	id="field-<%= data.field.path %>"
 	class="chimeraField-prime chimeraField-string form-control"
-	value="<%= String(data.value || '').encodeHTML() %>"
+	value="<%= data.value || '' %>"
 	type="text"
 >
 <% if (data.field.fieldType.is_array) { %>
