@@ -78,6 +78,16 @@
 	margin-bottom: 0;
 }
 
+.chimeraEditor-subschema {
+	margin-left: -5px;
+
+	.chimeraEditor-subschema-fields {
+		margin-bottom: 2rem;
+		border-left: 2px solid rgba(255, 255, 255, 0.4);
+		margin-left: -5px;
+	}
+}
+
 .chimeraField-entry:nth-child(even) .chimeraEditor-subschema-fields {
 	background-color: @gray-back;
 }
@@ -184,10 +194,17 @@
 }
 
 .chimeraField-left.control-label {
-	text-align: left;
+	display: flex;
+	margin-bottom: 1rem;
 
 	label {
 		padding-left: 9px;
+		margin-bottom: 0 !important;
+		margin-right: 1rem;
+	}
+
+	> * {
+		align-self: center;
 	}
 }
 

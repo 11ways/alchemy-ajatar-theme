@@ -3,6 +3,10 @@
 * Make compatible with alchemy v1.1.0
 
 * Make dialogs fully opaque + add backdrop-filter blur to the overlay if possible
+* Backport password field changed
+* Backport logout button fix
+* Backport dark theme text fixes
+* Make subschema fields more readable
 
 ## 1.1.3 (2018-12-06)
 
