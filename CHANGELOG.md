@@ -1,4 +1,4 @@
-## 1.1.4 (WIP)
+## 1.1.4 (2019-06-18)
 
 * Make dialogs fully opaque + add backdrop-filter blur to the overlay if possible
 * Backport password field changed
