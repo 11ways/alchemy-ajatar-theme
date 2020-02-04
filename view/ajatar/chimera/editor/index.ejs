@@ -77,7 +77,7 @@ if (pagination_config.sorting || pagination_config.filtering) {
 
 <% start('index_tbody') %>
 	<%
-		iterator = records.createIterator();
+		iterator = new Iterator(records);
 		while (iterator.hasNext()) {
 			item = iterator.next();
 			record = item.value;
