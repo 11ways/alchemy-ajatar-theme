@@ -3,11 +3,11 @@
 <%
 Router.setBreadcrumb([
 	{title: __('chimera', 'Dashboard'), route: 'chimera@Dashboard'},
-	{title: modelName.titleize(), route: 'chimera@ModelAction', parameters: {action: 'index'}},
+	{title: model_title, route: 'chimera@ModelAction', parameters: {action: 'index'}},
 	{title: display_field_value, route: 'chimera@RecordAction'}
 ]);
 
-set_title(__('chimera', 'Remove {model_name} record: "{name}"', {name: display_field_value, model_name: modelName}));
+set_title(__('chimera', 'Remove {model_name} record: "{name}"', {name: display_field_value, model_name: model_title}));
 
 start('chimera-cage') %>
 <div class="container-fluid half-padding chimera-editor">
@@ -16,7 +16,7 @@ start('chimera-cage') %>
 			<div class="panel panel-danger">
 				<div class="panel-heading">
 					<h3 class="panel-title">
-						<%= __('chimera', 'Remove {model_name} record: "{name}"', {name: display_field_value, model_name: modelName}) %>
+						<%= __('chimera', 'Remove {model_name} record: "{name}"', {name: display_field_value, model_name: model_title}) %>
 					</h3>
 				</div>
 				<div class="panel-body">
