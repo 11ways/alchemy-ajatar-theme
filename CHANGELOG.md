@@ -1,12 +1,15 @@
-## 1.2.0 (WIP)
+## 1.2.0 (2020-07-21)
 
 * Make compatible with alchemy v1.1.0
-
 * Make dialogs fully opaque + add backdrop-filter blur to the overlay if possible
 * Backport password field changed
 * Backport logout button fix
 * Backport dark theme text fixes
 * Make subschema fields more readable
+* Upgrade to ckeditor 4.13
+* Add checkbox toggle-switch stylings + some small ui fixes
+* Use date_edit view from base chimera
+* Use model_title in the views instead of model_name
 
 ## 1.1.3 (2018-12-06)
 
